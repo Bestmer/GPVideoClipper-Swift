@@ -13,7 +13,7 @@ import AVFoundation
     @objc optional func gp_videoReadyToPlay()
 }
 
-class GPVideoPlayerView: UIView {
+open class GPVideoPlayerView: UIView {
     var playerItem: AVPlayerItem!
     var player: AVPlayer!
     var maker: GPVideoConfigMaker!
@@ -42,7 +42,7 @@ class GPVideoPlayerView: UIView {
         NotificationCenter.default.removeObserver(self)
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -54,7 +54,7 @@ class GPVideoPlayerView: UIView {
         self.player.play()
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "status" {
             let status = self.playerItem.status
             if status == .readyToPlay {

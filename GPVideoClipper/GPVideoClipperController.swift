@@ -10,9 +10,9 @@ import UIKit
 import AVKit
 import Photos
 
-typealias ClipperCallback = (_ videoURL: URL, _ videoAsset: PHAsset, _ coverImage: UIImage) -> Void;
+public typealias ClipperCallback = (_ videoURL: URL, _ videoAsset: PHAsset, _ coverImage: UIImage) -> Void;
 
-class GPVideoClipperController: UIViewController, GPVideoPlayerViewDelegate, GPVideoClipperViewDelegate {
+open class GPVideoClipperController: UIViewController, GPVideoPlayerViewDelegate, GPVideoClipperViewDelegate {
     
     let kClipViewHeight = 135
     let kCutVideoPath = "cutDoneVideo.mp4"
@@ -60,17 +60,17 @@ class GPVideoClipperController: UIViewController, GPVideoPlayerViewDelegate, GPV
     
     //MARK: - Life cycle
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(self.playerView)
         self.view.addSubview(self.clipperView)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override open func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
@@ -82,7 +82,7 @@ class GPVideoClipperController: UIViewController, GPVideoPlayerViewDelegate, GPV
     }
     
     //MARK: - Public
-    static func clipperWithVideoURL(_ videoURL: URL, makerBlock:@escaping(GPVideoConfigMaker)->Void, callback: @escaping ClipperCallback) -> GPVideoClipperController {
+    static public func clipperWithVideoURL(_ videoURL: URL, makerBlock:@escaping(GPVideoConfigMaker)->Void, callback: @escaping ClipperCallback) -> GPVideoClipperController {
         let maker = GPVideoConfigMaker.init()
         makerBlock(maker)
         maker.sourceVideoTotalDuration = CGFloat(CMTimeGetSeconds(AVURLAsset.init(url: videoURL).duration))

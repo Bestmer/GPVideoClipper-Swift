@@ -16,7 +16,7 @@ import AVKit
     @objc func gp_didEndDragging()
 }
 
-class GPVideoClipperView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
+open class GPVideoClipperView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
 
     // Const
     let kDurationLabelWidth = 70
@@ -241,11 +241,11 @@ class GPVideoClipperView: UIView, UICollectionViewDelegate, UICollectionViewData
     
     //MARK: - <UICollectionViewDelegate, UICollectionViewDataSource>
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.imageArray.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(GPVideoClipperImageCell.self), for: indexPath) as! GPVideoClipperImageCell
         cell.imageView.image = self.imageArray[indexPath.item]
         return cell
@@ -253,7 +253,7 @@ class GPVideoClipperView: UIView, UICollectionViewDelegate, UICollectionViewData
     
     //MARK: - <ScrollViewDelegate>
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let time = (scrollView.contentOffset.x + self.collectionInsets.left) / self.perSecondWidth
         let startTime = time + (self.leftImageView.frame.maxX - self.collectionInsets.left) / self.perSecondWidth
         
@@ -270,13 +270,13 @@ class GPVideoClipperView: UIView, UICollectionViewDelegate, UICollectionViewData
         }
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if (self.delegate != nil) && (self.delegate?.responds(to: #selector(self.delegate?.gp_didEndDragging)))! {
             self.delegate?.gp_didEndDragging()
         }
     }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
            if (self.delegate != nil) && (self.delegate?.responds(to: #selector(self.delegate?.gp_didEndDragging)))! {
                self.delegate?.gp_didEndDragging()
@@ -323,7 +323,7 @@ class GPVideoClipperView: UIView, UICollectionViewDelegate, UICollectionViewData
         self.p_configSubview()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

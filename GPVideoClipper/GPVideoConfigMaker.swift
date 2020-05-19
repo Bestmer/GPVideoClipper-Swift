@@ -8,16 +8,16 @@
 
 import UIKit
 
-class GPVideoConfigMaker: NSObject {
+open class GPVideoConfigMaker: NSObject {
     // MARK: - Required
     /** 开始时间 */
-    var startTime: CGFloat
+    public var startTime: CGFloat
     /** 结束时间 */
-    var endTime: CGFloat
+    public var endTime: CGFloat
     /** 裁剪后视频的最小时长 */
-    var clippedVideoMinDuration: CGFloat
+    public var clippedVideoMinDuration: CGFloat
     /** 裁剪后视频的最长时长 */
-    var clippedVideoMaxDuration: CGFloat
+    public var clippedVideoMaxDuration: CGFloat
     
     // MARK: - User ignore
     /** 源视频总时长（框架内部进行计算,使用者不需要关心） */

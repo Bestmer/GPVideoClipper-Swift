@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "GPVideoClipper-Swift"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.1"
   spec.summary      = "iOS long video clip tool, similar to WeChat moments and tiktok."
   spec.description  = <<-DESC
                    iOS long video clip tool, similar to WeChat moments select and edit videos larger than 15s from albums, 
