@@ -9,7 +9,7 @@
 import UIKit
 import AVKit
 
-@objc protocol GPVideoClipperViewDelegate: NSObjectProtocol {
+@objc public protocol GPVideoClipperViewDelegate: NSObjectProtocol {
     @objc func gp_cancelButtonAction(button: UIButton)
     @objc func gp_doneButtonAction(button: UIButton)
     @objc func gp_videoLengthDidChanged(time: CGFloat)
@@ -25,19 +25,19 @@ open class GPVideoClipperView: UIView, UICollectionViewDelegate, UICollectionVie
     let kLineHeight: CGFloat = 3.0
     
     // Public
-    weak var delegate:GPVideoClipperViewDelegate?
-    var avAsset: AVAsset! {
+    public weak var delegate:GPVideoClipperViewDelegate?
+    public var avAsset: AVAsset! {
           willSet {
             self.avAsset = newValue
             self.p_loadThumbnailImages()
           }
     }
-    var progressTime: CGFloat! {
+    public var progressTime: CGFloat! {
         return (self.progressView.frame.minX - self.leftImageView.frame.maxX) / self.perSecondWidth
     }
-    
-    // Private
-    private var maker: GPVideoConfigMaker!
+    public var maker: GPVideoConfigMaker!
+
+	// Private
     private var selectedTime: CGFloat!
     private var cellWidth: CGFloat!
     private var cellCount: UInt!
@@ -298,7 +298,7 @@ open class GPVideoClipperView: UIView, UICollectionViewDelegate, UICollectionVie
     
     //MARK: - Init
     
-    init(frame: CGRect, maker: GPVideoConfigMaker) {
+    public init(frame: CGRect, maker: GPVideoConfigMaker) {
         self.maker = maker
         super.init(frame: frame)
         self.isUserInteractionEnabled = true
@@ -388,7 +388,7 @@ open class GPVideoClipperView: UIView, UICollectionViewDelegate, UICollectionVie
     
     //MARK: - Public
     
-    func gp_updateProgressViewWithProgress(_ progress: CGFloat) {
+    public func gp_updateProgressViewWithProgress(_ progress: CGFloat) {
         guard self.selectedImageView != nil else {
             let width = self.rightImageView.frame.minX - self.leftImageView.frame.maxX;
             let newX = self.leftImageView.frame.maxX + progress * width;

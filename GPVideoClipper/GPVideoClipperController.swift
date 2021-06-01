@@ -255,22 +255,22 @@ open class GPVideoClipperController: UIViewController, GPVideoPlayerViewDelegate
     
     //MARK: - <GPVideoPlayerViewDelegate>
     
-    func gp_videoReadyToPlay() {
+	public func gp_videoReadyToPlay() {
         self.playerView.playerItem.forwardPlaybackEndTime = CMTime.init(value: (CMTimeValue(self.maker.endTime * 1000)), timescale: 1000)
         self.gp_playVideo()
     }
     
     //MARK: - <GPVideoClipperViewDelegate>
     
-    func gp_cancelButtonAction(button: UIButton) {
+	public func gp_cancelButtonAction(button: UIButton) {
         self.gp_back()
     }
     
-    func gp_doneButtonAction(button: UIButton) {
+	public func gp_doneButtonAction(button: UIButton) {
         self.gp_saveVideo()
     }
     
-    func gp_videoLengthDidChanged(time: CGFloat) {
+	public func gp_videoLengthDidChanged(time: CGFloat) {
         guard time < 0 else {
             if self.playerView.playerItem.status == .readyToPlay {
                 self.playerView.player.seek(to: CMTime.init(value: CMTimeValue(time * 1000), timescale: 1000), toleranceBefore: .zero, toleranceAfter: .zero)
@@ -280,7 +280,7 @@ open class GPVideoClipperController: UIViewController, GPVideoPlayerViewDelegate
         }
     }
     
-    func gp_didEndDragging() {
+	public func gp_didEndDragging() {
         self.playerView.playerItem.forwardPlaybackEndTime =  CMTime.init(value: (CMTimeValue(self.maker.endTime * 1000)), timescale: 1000)
         self.gp_playVideo()
     }
