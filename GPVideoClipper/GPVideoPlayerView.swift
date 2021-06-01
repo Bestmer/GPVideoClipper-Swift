@@ -14,15 +14,15 @@ import AVFoundation
 }
 
 open class GPVideoPlayerView: UIView {
-    var playerItem: AVPlayerItem!
-    var player: AVPlayer!
-    var maker: GPVideoConfigMaker!
-    weak var delegate:GPVideoPlayerViewDelegate?
+    public var playerItem: AVPlayerItem!
+    public var player: AVPlayer!
+    public var maker: GPVideoConfigMaker!
+    public weak var delegate:GPVideoPlayerViewDelegate?
     
     private var avPlayer: AVPlayerLayer!
     private var videoURL: URL!
     
-    init(frame: CGRect, videoURL: URL) {
+    public init(frame: CGRect, videoURL: URL) {
         self.videoURL = videoURL
         self.playerItem = AVPlayerItem.init(url: videoURL)
         self.player = AVPlayer.init(playerItem: self.playerItem)

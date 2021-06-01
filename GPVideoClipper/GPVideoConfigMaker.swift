@@ -25,37 +25,37 @@ open class GPVideoConfigMaker: NSObject {
     
     // MARK: - Optional
     /** 是否隐藏已选择时间标签 */
-    var isHiddenSelectedTimeTag: Bool
+    public var isHiddenSelectedTimeTag: Bool
     /** 选择框颜色 */
-    var selectedBoxColor: UIColor
+    public var selectedBoxColor: UIColor
     /** 左边框图片 */
-    var leftSelectedImage: UIImage
+    public var leftSelectedImage: UIImage
     /** 右边框图片 */
-    var rightSelectedImage: UIImage
+    public var rightSelectedImage: UIImage
     /** 左右选择框图片的宽度 */
-    var selectedImageWidth: CGFloat
+    public var selectedImageWidth: CGFloat
     /** 初始化时选择框中选中的图片张数 */
-    var defaultSelectedImageCount: UInt
+    public var defaultSelectedImageCount: UInt
     /** 选择框整体左间距 */
-    var leftMargin: CGFloat
+    public var leftMargin: CGFloat
     /** 选择框整体右间距 */
-    var rightMargin: CGFloat
+    public var rightMargin: CGFloat
     /** 左边按钮字体 */
-    var leftButtonFont: UIFont
+    public var leftButtonFont: UIFont
     /** 左边按钮文字颜色 */
-    var leftButtonFontColor: UIColor
+    public var leftButtonFontColor: UIColor
     /** 左边按钮背景色 */
-    var leftButtonBackgroundColor: UIColor
+    public var leftButtonBackgroundColor: UIColor
     /** 左边按钮标题 */
-    var leftButtonTitle: String
+    public var leftButtonTitle: String
     /** 右边按钮字体 */
-    var rightButtonFont: UIFont
+    public var rightButtonFont: UIFont
     /** 右边按钮文字颜色 */
-    var rightButtonFontColor: UIColor
+    public var rightButtonFontColor: UIColor
     /** 右边按钮背景色 */
-    var rightButtonBackgroundColor: UIColor
+    public var rightButtonBackgroundColor: UIColor
     /** 右边按钮标题 */
-    var rightButtonTitle: String
+    public var rightButtonTitle: String
     
     override init() {
         startTime = 0
